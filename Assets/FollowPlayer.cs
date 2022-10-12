@@ -8,5 +8,15 @@ public class FollowPlayer : MonoBehaviour
     void LateUpdate()
     {
         transform.position = player.transform.position + offset;
+        Quaternion quat = transform.rotation;
+
+        Vector3 newangles = new Vector3(
+            transform.rotation.eulerAngles.x, 
+            transform.rotation.eulerAngles.y,
+            player.transform.rotation.eulerAngles.z);
+
+        quat.eulerAngles = newangles;
+
+        transform.rotation = quat;
     }
 }
