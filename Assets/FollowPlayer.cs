@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private Transform player;
     [SerializeField] private Vector3 offset;
 
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
-        Quaternion quat = transform.rotation;
+        transform.position = player.position + offset;
 
-        Vector3 newangles = new Vector3(
-            transform.rotation.eulerAngles.x, 
+        Quaternion targetQuaternion = transform.rotation;
+
+        targetQuaternion.eulerAngles = new Vector3(
+            transform.rotation.eulerAngles.x,
             transform.rotation.eulerAngles.y,
-            player.transform.rotation.eulerAngles.z);
+            player.rotation.eulerAngles.z);
 
-        quat.eulerAngles = newangles;
-
-        transform.rotation = quat;
+        transform.rotation = targetQuaternion;
     }
 }
