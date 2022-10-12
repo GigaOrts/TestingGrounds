@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3f;
-    [SerializeField] private float turnSpeed = 30f;
+    [SerializeField] private float speed;
+    [SerializeField] private float turnSpeed;
     private float horizontalInput;
     private float verticalInput;
 
