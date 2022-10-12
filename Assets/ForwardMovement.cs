@@ -6,7 +6,7 @@ public class ForwardMovement : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this, 200);
+        Destroy(this, 200f);
     }
 
     void Update()

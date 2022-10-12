@@ -3,22 +3,26 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private Vector3 thirdPersonOffset;
     [SerializeField] private Quaternion thirdPersonRotationOffset;
-    [SerializeField] private Vector3 firstPersonOffset;
-
-    private bool isSwitchedView = true;
+    
+    private Vector3 thirdPersonOffset;
+    private Vector3 firstPersonOffset;
     private Vector3 viewOffset;
+
+    private bool isViewSwitched = true;
 
     private void Start()
     {
-        SwitchPlayerView(isSwitchedView);
+        thirdPersonOffset = new Vector3(0f, 5.21000004f, -7.32999992f);
+        firstPersonOffset = new Vector3(-0.67242837f, 2.10665917f, -0.0550551414f);
+
+        SwitchPlayerView(isViewSwitched);
     }
 
     void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
-            SwitchPlayerView(isSwitchedView);
+            SwitchPlayerView(isViewSwitched);
 
         transform.position = player.position + viewOffset;
 
@@ -34,7 +38,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void SwitchPlayerView(bool toggle)
     {
-        isSwitchedView = !toggle;
+        isViewSwitched = !toggle;
 
         if (toggle)
         {
