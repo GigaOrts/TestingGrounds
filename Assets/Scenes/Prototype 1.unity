@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed73fa61c20e194fa2b1efe629047f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 18
   turnSpeed: 150
 --- !u!54 &94588550
 Rigidbody:
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5924bc2b43d6b429a1bb54ced57c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 18
   turnSpeed: 150
 --- !u!4 &1566369358
 Transform:
