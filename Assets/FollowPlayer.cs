@@ -3,11 +3,24 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector3 thirdPersonOffset;
+    [SerializeField] private Quaternion thirdPersonRotationOffset;
+    [SerializeField] private Vector3 firstPersonOffset;
+
+    private bool isSwitchedView = true;
+    private Vector3 viewOffset;
+
+    private void Start()
+    {
+        SwitchPlayerView(isSwitchedView);
+    }
 
     void LateUpdate()
     {
-        transform.position = player.position + offset;
+        if (Input.GetMouseButtonDown(0))
+            SwitchPlayerView(isSwitchedView);
+
+        transform.position = player.position + viewOffset;
 
         Quaternion targetQuaternion = transform.rotation;
 
@@ -17,5 +30,21 @@ public class FollowPlayer : MonoBehaviour
             player.rotation.eulerAngles.z);
 
         transform.rotation = targetQuaternion;
+    }
+
+    private void SwitchPlayerView(bool toggle)
+    {
+        isSwitchedView = !toggle;
+
+        if (toggle)
+        {
+            viewOffset = thirdPersonOffset;
+            transform.rotation = thirdPersonRotationOffset;
+        }
+        else
+        {
+            viewOffset = firstPersonOffset;
+            transform.rotation = Quaternion.identity;
+        }
     }
 }
